@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const Manga = ({ mangaId }) => {
   const [mangaDetails, setMangaDetails] = useState(null);
   const { id } = useParams();
-
+  console.log("id", id);
   useEffect(() => {
     // Appel à une fonction pour obtenir les détails du manga en fonction de son ID
     getMangaDetails();
