@@ -1,0 +1,212 @@
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+
+  /* HTML5 display-role reset for older browsers */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
+
+  body {
+    line-height: 1;
+  }
+
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  blockquote,
+  q {
+    quotes: none;
+  }
+
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: '';
+    content: none;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  *,
+  ::before,
+  ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 62.5%;
+    /* 1rem = 10px */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  h1 {
+    font-family: "Oswald", sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.6rem;
+  }
+
+  h3 {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.4rem;
+  }
+
+  h4 {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.2rem;
+  }
+
+  h5 {
+    font-family: "Oswald", sans-serif;
+    font-size: 2rem;
+  }
+
+  h6 {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+  }

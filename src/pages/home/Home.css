@@ -1,0 +1,206 @@
+@import url(./reset.css);
+
+@media screen {}
+
+body {
+    background-color: #060911;
+    color: white;
+}
+
+/* desktop */
+
+/* ipad */
+
+/* iphone 12/13 */
+@media screen and (min-device-width: 428px) and (max-device-width: 428px) {
+    h1 {
+        background-color: lightblue;
+    }
+
+    .navbar-menu {
+        display: block;
+    }
+}
+
+/* --------------------------------------
+-----------------header------------------
+-----------------------------------------*/
+
+header {
+    background-color: #060911;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 1280px;
+}
+
+.navbar {
+    display: flex;
+    background-color: #060911;
+    color: white;
+    gap: 48px;
+    padding: 24px 0px;
+
+}
+
+.navbar-logo_links {
+    display: flex;
+    gap: 48px;
+}
+
+.navbar-logo img {
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.navbar-menu {
+    display: none;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 8px;
+}
+
+.navbar-input_button {
+    display: flex;
+    gap: 32px;
+}
+
+.navbar-input {
+    border-radius: 10px;
+    -webkit-border-radius: 99px;
+    -moz-border-radius: 99px;
+    -ms-border-radius: 99px;
+    -o-border-radius: 99px;
+    max-height: 56px;
+    padding: 24px;
+    padding-right: 500px;
+
+}
+
+.button {
+    font-size: 16px;
+    min-height: 56px;
+    min-width: 159px;
+    background-color: #95FC11;
+    color: #060911;
+    border-radius: 99px;
+    -webkit-border-radius: 99px;
+    -moz-border-radius: 99px;
+    -ms-border-radius: 99px;
+    -o-border-radius: 99px;
+}
+
+.navbar-profile img {
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 99px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 99px;
+    -ms-border-radius: 99px;
+    -o-border-radius: 99px;
+}
+
+/* --------------------------------------
+-----------------main--------------------
+-----------------------------------------*/
+
+main {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 1280px;
+    background-color: #060911;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.hero {
+    display: flex;
+    position: relative;
+}
+
+.hero img {
+    border: solid black;
+    border-radius: 24px;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    -ms-border-radius: 24px;
+    -o-border-radius: 24px;
+    max-width: 1216px;
+    max-height: 624px;
+}
+
+.hero-text_button {
+    max-width: 500px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 104px;
+    bottom: 64px;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.trending {
+    padding-top: 93px;
+    color: white;
+}
+
+.trending-list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 24px;
+    padding-top: 24px;
+}
+
+.trending-list-card {
+    border-radius: 16px;
+    padding: 8px;
+    font-size: 24px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+}
+
+.trending-list-card img {
+    max-width: 280px;
+    max-height: 365px;
+    border-radius: 16px;
+}
+
+/* .trending-list p {
+    font-size: 24px;
+} */
+
+/* --------------------------------------
+-----------------footer------------------
+-----------------------------------------*/
+
+footer {
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 1280px;
+    background-color: #060911;
+}
