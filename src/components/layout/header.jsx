@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import HamSvg from "../../components/assets/ham";
 
 const Header = (props) => {
-  const { getSearchAnime } = props;
+  const [animeList, setAnimeList] = useState([]);
+  async function getSearchAnime(query) {
+    const url = `https://api.jikan.moe/v4/anime?q=${query}&&limit=10`;
+
+    const response = await fetch(url);
+
+    const result = await response.json();
+
+    setAnimeList(result.data);
+    console.log(result.data);
+  }
   return (
-    <header>
+    <header style={{}}>
       <navbar className="navbar">
         <div className="navbar-logo_links">
           <div className="navbar-logo">
-            <img src="images/oshi-no-ko.jpg" alt="logo" />
+            <a href="/">
+              {" "}
+              <img src="/images/oshi-no-ko.jpg" alt="logo" />
+            </a>
           </div>
           <div className="navbar-menu">
-            <img src="" alt="svg" />
+            {/* <img src="" alt="svg" /> */}
+            <HamSvg />
           </div>
           <div className="navbar-links">
             <a href="/">
@@ -25,19 +40,43 @@ const Header = (props) => {
           </div>
         </div>
         <div className="navbar-input_button">
-          <input
-            className="navbar-input"
-            // style={styles.input}
-            type="text"
-            placeholder="Search"
-            onChange={(e) => getSearchAnime(e.target.value)}
-          />
-          <button className="button">Sign up</button>
-          {/* <div className="navbar-profile">
-            <a href="#">
-              <img src="images/academys-genius-swordmaster.jpg" alt="profile" />
-            </a>
-          </div> */}
+          <div
+            style={{
+              position: "relative",
+              //faire passer au dessus du main
+              zIndex: 999,
+            }}
+          >
+            <input
+              className="navbar-input"
+              type="text"
+              placeholder="Search"
+              onChange={(e) => getSearchAnime(e.target.value)}
+            />
+            <div
+              style={{
+                width: "100%",
+                position: "absolute",
+                top: "calc(100% + 5px)",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <div className="search-results"
+                style={{
+                  display: "flex",
+                  height: "30px",
+                  backgroundColor: "grey",
+                }}
+              >
+                one piece
+              </div>
+            </div>
+          </div>
+
+          <a href="/signin/Signin">
+            <button className="button">Sign in</button>
+          </a>
         </div>
       </navbar>
     </header>

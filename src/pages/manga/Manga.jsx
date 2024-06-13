@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Layout from "../../components/layout";
 
 const Manga = ({ mangaId }) => {
   const [mangaDetails, setMangaDetails] = useState(null);
@@ -27,23 +28,26 @@ const Manga = ({ mangaId }) => {
 
   // Affichage des détails du manga
   return (
-    <div>
+    <Layout>
       {mangaDetails ? (
-        <div>
+        <div className="manga-container">
           <img src={mangaDetails.images.jpg.image_url} alt={mangaDetails} />
-          <h2>{mangaDetails.title}</h2>
-          <p>Synopsis: {mangaDetails.synopsis}</p>
-          <p>genres:</p>
-          {mangaDetails.genres.map((genre) => (
-            <p key={genre.mal_id}>{genre.name}</p>
-          ))}
-          <p>Score: {mangaDetails.score}</p>
-          <p>rank: {mangaDetails.rank}</p>
+          <div className="manga-text">
+            <h2>{mangaDetails.title}</h2>
+            <p>Synopsis: {mangaDetails.synopsis}</p>
+            <div className="manga-genres">
+              <p>Genres:</p>
+              {mangaDetails.genres.map((genre) => (
+                <p key={genre.mal_id}>{genre.name}</p>
+              ))}
+            </div>
+            <p>Score: {mangaDetails.score}</p>
+          </div>
         </div>
       ) : (
         <p>Loading manga details...</p>
       )}
-    </div>
+    </Layout>
   );
 };
 

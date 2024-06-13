@@ -22,16 +22,16 @@ const Home = () => {
     console.log(result.data);
   }
 
-  async function getSearchAnime(query) {
-    const url = `https://api.jikan.moe/v4/anime?q=${query}&&limit=10`;
+  // async function getSearchAnime(query) {
+  //   const url = `https://api.jikan.moe/v4/anime?q=${query}&&limit=10`;
 
-    const response = await fetch(url);
+  //   const response = await fetch(url);
 
-    const result = await response.json();
+  //   const result = await response.json();
 
-    setAnimeList(result.data);
-    console.log(result.data);
-  }
+  //   setAnimeList(result.data);
+  //   console.log(result.data);
+  // }
 
   return (
     <Layout>
@@ -92,7 +92,7 @@ const Home = () => {
           {animeList &&
             animeList.map((anime) => (
               <div class="trending-list-card" key={anime.mal_id}>
-                <a href={`/profil/manga/${anime.mal_id}`}>
+                <a href={`/manga/manga/${anime.mal_id}`}>
                   <div className="trending-list-card-image">
                     <img src={anime.images.jpg.image_url} alt="img" />
                   </div>
@@ -114,7 +114,7 @@ const Home = () => {
           {animeList &&
             animeList.map((anime) => (
               <div class="trending-list-card" key={anime.mal_id}>
-                <a href={`/profil/manga/${anime.mal_id}`}>
+                <a href={`/manga/manga/${anime.mal_id}`}>
                   <div className="trending-list-card-image">
                     <img src={anime.images.jpg.image_url} alt="img" />
                   </div>

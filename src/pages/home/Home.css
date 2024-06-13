@@ -7,20 +7,7 @@ body {
     color: white;
 }
 
-/* desktop */
 
-/* ipad */
-
-/* iphone 12/13 */
-@media screen and (min-device-width: 428px) and (max-device-width: 428px) {
-    h1 {
-        background-color: lightblue;
-    }
-
-    .navbar-menu {
-        display: block;
-    }
-}
 
 /* --------------------------------------
 -----------------header------------------
@@ -38,6 +25,7 @@ header {
 .navbar {
     display: flex;
     background-color: #060911;
+    width: 100%;
     color: white;
     gap: 48px;
     padding: 24px 0px;
@@ -62,16 +50,24 @@ header {
 .navbar-menu {
     display: none;
 }
+.navbar-menu svg{
+    width: 40px;
+    aspect-ratio: 1/1;
+}
 
 .navbar-links {
     display: flex;
     justify-content: center;
     gap: 40px;
     padding: 8px;
+
 }
 
 .navbar-input_button {
+    width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
     gap: 32px;
 }
 
@@ -81,16 +77,16 @@ header {
     -moz-border-radius: 99px;
     -ms-border-radius: 99px;
     -o-border-radius: 99px;
-    max-height: 56px;
-    padding: 24px;
-    padding-right: 500px;
+    padding: 12px 24px;
+    /* Limiter la largeur de l'input */
+    max-width: 400px;
+    /* Prender tout l'espace (responsive à l'écran actuel) */
+    width: 100%;
 
 }
 
 .button {
     font-size: 16px;
-    min-height: 56px;
-    min-width: 159px;
     background-color: #95FC11;
     color: #060911;
     border-radius: 99px;
@@ -98,6 +94,10 @@ header {
     -moz-border-radius: 99px;
     -ms-border-radius: 99px;
     -o-border-radius: 99px;
+    padding: 16px 32px;
+    /* Le texte ne saute pas de ligne */
+    text-wrap: nowrap;
+
 }
 
 .navbar-profile img {
@@ -138,8 +138,8 @@ main {
     -moz-border-radius: 24px;
     -ms-border-radius: 24px;
     -o-border-radius: 24px;
-    max-width: 1216px;
-    max-height: 624px;
+    width: 100%;
+    aspect-ratio: 2 / 1;
 }
 
 .hero-text_button {
@@ -147,8 +147,8 @@ main {
     position: absolute;
     display: flex;
     flex-direction: column;
-    left: 104px;
-    bottom: 64px;
+    left: 5%;
+    bottom: 10%;
     gap: 40px;
     align-items: flex-start;
 }
@@ -158,6 +158,10 @@ main {
     flex-direction: column;
     gap: 16px;
 }
+
+/* ---------------------------------------
+-----------------Trending-----------------
+-----------------------------------------*/
 
 .trending {
     padding-top: 93px;
@@ -179,17 +183,110 @@ main {
     -moz-border-radius: 16px;
     -ms-border-radius: 16px;
     -o-border-radius: 16px;
+    max-width: 300px;
+    position: relative;
 }
 
 .trending-list-card img {
-    max-width: 280px;
+    max-width: 318px;
     max-height: 365px;
     border-radius: 16px;
 }
 
-/* .trending-list p {
-    font-size: 24px;
-} */
+.like {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    width: 32px;
+    z-index: 99;
+    border: 2px solid black;
+}
+.read {
+    position: absolute;
+    top: 60%;
+    left: 80%;
+    width: 32px;
+    aspect-ratio: 1/1;
+    z-index: 99;
+    border: 2px solid black;
+}
+
+.trending-list p {
+    max-width: 60%;
+}
+
+/* ---------------------------------------
+-----------------manga--------------------
+-----------------------------------------*/
+
+.manga-container{
+    display: flex;
+    gap: 2rem;
+}
+.manga-container img{
+    max-width: 318px;
+    max-height: 365px;
+    border-radius: 16px;
+}
+.manga-text{
+    display: flex;
+    flex-direction: column;
+gap: 1rem;
+}
+
+
+/* ---------------------------------------
+-----------------SIGNIN-------------------
+-----------------------------------------*/
+.bigimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../../public/images/yu-gi-oh.jpg");
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.joinus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.7);
+    background: (0, 0, 0, 0.4);
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    padding: 24px;
+    gap: 29px;
+}
+
+
+.joinus input {
+    padding: 12px 290px 12px 20px;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    -ms-border-radius: 9px;
+    -o-border-radius: 9px;
+}
+
+.joinus-button {
+    font-size: 16px;
+    background-color: #95FC11;
+    color: #060911;
+    border-radius: 99px;
+    -webkit-border-radius: 99px;
+    -moz-border-radius: 99px;
+    -ms-border-radius: 99px;
+    -o-border-radius: 99px;
+    padding: 16px 32px;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
 
 /* --------------------------------------
 -----------------footer------------------
@@ -203,4 +300,25 @@ footer {
     padding-right: 16px;
     max-width: 1280px;
     background-color: #060911;
+}
+
+
+/* ---------------------------------------
+-----------------media queries------------
+-----------------------------------------*/
+
+/* iphone 12/13 */
+@media screen and (max-device-width: 700px) {
+    h1 {
+        background-color: lightblue;
+    }
+
+    .navbar-menu {
+        display: block;
+    
+    }
+
+    .navbar-links {
+        display: none;
+    }
 }

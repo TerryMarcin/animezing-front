@@ -1,7 +1,8 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
-import Manga from "./pages/profil/Manga";
+import Manga from "./pages/manga/Manga";
 import Trending from "./pages/trending/Trending";
+import Signin from "./pages/signin/Signin";
 import React, { useState } from "react";
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trending/Trending" element={<Trending />} />
-        <Route path="/profil/Manga/:id" element={<Manga />} />
+        <Route path="/signin/Signin" element={<Signin />} />
+        <Route path="/manga/Manga/:id" element={<Manga />} />
       </Routes>
     </BrowserRouter>
   );

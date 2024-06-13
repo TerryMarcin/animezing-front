@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Layout from "../../components/layout";
+
 
 const Trending = () => {
   const [animeList, setAnimeList] = useState([]);
@@ -19,7 +21,7 @@ const Trending = () => {
   }
 
   return (
-    <div>
+    <Layout>
       <main>
         <div className="trending">
           <div className="trending-title">
@@ -29,21 +31,28 @@ const Trending = () => {
             {animeList &&
               animeList.map((anime) => (
                 <div class="trending-list-card" key={anime.mal_id}>
-                  <a href={`/profil/manga/${anime.mal_id}`}>
+                  <a href={`/manga/manga/${anime.mal_id}`}>
                     <div className="trending-list-card-image">
                       <img src={anime.images.jpg.image_url} alt="img" />
                     </div>
                   </a>
                   <p>{anime.title}</p>
+                  <img
+                    class="like"
+                    src="/images/gradient_heart.jpg"
+                    alt="like"
+                  />
+                  <img
+                    class="read"
+                    src="/images/w5g7_hi23_210729.jpg"
+                    alt="read"
+                  />
                 </div>
               ))}
           </ul>
-          <a href="/trending/Trending">
-            <button className="button">View all</button>
-          </a>
         </div>
       </main>
-    </div>
+    </Layout>
   );
 };
 export default Trending;
