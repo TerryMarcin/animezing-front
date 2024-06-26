@@ -29,17 +29,43 @@ header {
     color: white;
     gap: 48px;
     padding: 24px 0px;
-
 }
 
-.navbar-logo_links {
+.navbar-container {
     display: flex;
     gap: 48px;
+    align-items: center;
+    position: relative;
+}
+
+.target {
+    display: none;
+}
+
+.target-active {
+    z-index: 999;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    height: max-content;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    color: #95FC11;
+    border-radius: 20px;
+    text-align: center;
+    padding: 8px;
+}
+
+.navbar-logo {
+    width: fit-content;
+    height: fit-content;
 }
 
 .navbar-logo img {
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 85px;
+    max-height: 85px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -50,9 +76,10 @@ header {
 .navbar-menu {
     display: none;
 }
-.navbar-menu svg{
+
+.navbar-menu svg {
     width: 40px;
-    aspect-ratio: 1/1;
+    height: fit-content;
 }
 
 .navbar-links {
@@ -60,7 +87,11 @@ header {
     justify-content: center;
     gap: 40px;
     padding: 8px;
+    align-items: center;
+}
 
+.navbar-links a p:hover {
+    font-weight: bolder;
 }
 
 .navbar-input_button {
@@ -69,36 +100,19 @@ header {
     align-items: center;
     justify-content: flex-end;
     gap: 32px;
+    text-align: end;
 }
 
-.navbar-input {
-    border-radius: 10px;
-    -webkit-border-radius: 99px;
-    -moz-border-radius: 99px;
-    -ms-border-radius: 99px;
-    -o-border-radius: 99px;
-    padding: 12px 24px;
-    /* Limiter la largeur de l'input */
-    max-width: 400px;
-    /* Prender tout l'espace (responsive à l'écran actuel) */
-    width: 100%;
-
+.navbar-input_button svg {
+    width: 50px;
+    height: fit-content;
 }
 
-.button {
-    font-size: 16px;
-    background-color: #95FC11;
-    color: #060911;
-    border-radius: 99px;
-    -webkit-border-radius: 99px;
-    -moz-border-radius: 99px;
-    -ms-border-radius: 99px;
-    -o-border-radius: 99px;
-    padding: 16px 32px;
-    /* Le texte ne saute pas de ligne */
-    text-wrap: nowrap;
-
+.search {
+    display: flex;
+    gap: 4px;
 }
+
 
 .navbar-profile img {
     max-width: 80px;
@@ -108,6 +122,102 @@ header {
     -moz-border-radius: 99px;
     -ms-border-radius: 99px;
     -o-border-radius: 99px;
+}
+
+
+
+/* --------------------------------------
+----------- special button --------------
+-----------------------------------------*/
+
+.sb-container {
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    font-size: larger;
+    position: relative;
+    border: black 1px solid;
+    max-width: fit-content;
+    z-index: 2;
+}
+
+.sb-container a {
+    color: white;
+    text-decoration: none;
+}
+
+.sb-container i {
+    margin-left: 5px;
+    font-size: 1.2rem;
+    transition: all .5s;
+}
+
+.sb-container:hover i {
+    transform: translateX(5px);
+    -webkit-transform: translateX(5px);
+    -moz-transform: translateX(5px);
+    -ms-transform: translateX(5px);
+    -o-transform: translateX(5px);
+}
+
+.bg {
+    position: absolute;
+    background: linear-gradient(147deg, #4CAF50 0%, #95FC11 74%);
+    width: 25%;
+    height: 25%;
+    border-radius: 10px;
+    bottom: -3px;
+    left: -4px;
+    z-index: -1;
+    transition: all .5s;
+
+}
+
+.sb-container a:hover~.bg {
+    width: 95%;
+}
+
+/* --------------------------------------
+---------------profile pic---------------
+-----------------------------------------*/
+
+.phone-signin {
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    font-size: larger;
+    display: none;
+    color: #95FC11;
+}
+
+
+
+/* --------------------------------------
+-----------------searchbar---------------
+-----------------------------------------*/
+
+.search-field {
+
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    width: 100%;
+    display: flex;
+    background-color: black;
+    padding: 20px;
+    padding-top: 50px;
+}
+
+.search-input {
+    background-color: #fff;
+    color: #060911;
+    padding: 20px;
+    width: 100%;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 /* --------------------------------------
@@ -126,12 +236,13 @@ main {
 
 }
 
-.hero {
+section {
+    padding-top: 48px;
     display: flex;
     position: relative;
 }
 
-.hero img {
+section img {
     border: solid black;
     border-radius: 24px;
     -webkit-border-radius: 24px;
@@ -160,36 +271,73 @@ main {
 }
 
 /* ---------------------------------------
+--------------main button-----------------
+-----------------------------------------*/
+
+.button {
+    font-size: 16px;
+    background-color: #95FC11;
+    color: #060911;
+    border-radius: 99px;
+    -webkit-border-radius: 99px;
+    -moz-border-radius: 99px;
+    -ms-border-radius: 99px;
+    -o-border-radius: 99px;
+    padding: 16px 32px;
+    /* Le texte ne saute pas de ligne */
+    text-wrap: nowrap;
+}
+
+/* ---------------------------------------
 -----------------Trending-----------------
 -----------------------------------------*/
 
 .trending {
-    padding-top: 93px;
+    padding-top: 48px;
     color: white;
+}
+
+.trending-title {
+    height: min-content;
+    padding-bottom: 48px;
 }
 
 .trending-list {
     display: flex;
     flex-flow: row wrap;
     gap: 24px;
-    padding-top: 24px;
 }
+
 
 .trending-list-card {
     border-radius: 16px;
-    padding: 8px;
+    padding: 8px 8px 8px 8px;
     font-size: 24px;
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
     -ms-border-radius: 16px;
     -o-border-radius: 16px;
-    max-width: 300px;
+    max-width: min-content;
+    height: 400px;
     position: relative;
 }
 
-.trending-list-card img {
-    max-width: 318px;
-    max-height: 365px;
+.trending-list-carousel-card {
+    border-radius: 16px;
+    padding: 8px 8px 8px 16px;
+    font-size: 24px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+    max-width: min-content;
+    height: 400px;
+    position: relative;
+}
+
+.trending img {
+    max-width: 400px;
+    max-height: 400px;
     border-radius: 16px;
 }
 
@@ -201,6 +349,7 @@ main {
     z-index: 99;
     border: 2px solid black;
 }
+
 .read {
     position: absolute;
     top: 60%;
@@ -212,26 +361,33 @@ main {
 }
 
 .trending-list p {
-    max-width: 60%;
+    overflow: hidden;
 }
 
 /* ---------------------------------------
 -----------------manga--------------------
 -----------------------------------------*/
 
-.manga-container{
+.manga-container {
+    padding-top: 48px;
     display: flex;
-    gap: 2rem;
+    gap: 48px;
+    height: min-content;
 }
-.manga-container img{
-    max-width: 318px;
-    max-height: 365px;
+
+.manga-container img {
+    max-width: 380px;
+    max-height: 380px;
     border-radius: 16px;
+
 }
-.manga-text{
+
+.manga-text {
     display: flex;
     flex-direction: column;
-gap: 1rem;
+    gap: 24px;
+    overflow: scroll;
+    height: 400px;
 }
 
 
@@ -293,6 +449,7 @@ gap: 1rem;
 -----------------------------------------*/
 
 footer {
+    display: flex;
     padding-top: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -302,6 +459,14 @@ footer {
     background-color: #060911;
 }
 
+.contact-us {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    cursor: pointer;
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.171);
+}
 
 /* ---------------------------------------
 -----------------media queries------------
@@ -310,15 +475,46 @@ footer {
 /* iphone 12/13 */
 @media screen and (max-device-width: 700px) {
     h1 {
-        background-color: lightblue;
+        font-size: 24px;
+
+    }
+
+    p {
+        font-size: 16px;
     }
 
     .navbar-menu {
         display: block;
-    
+
     }
 
     .navbar-links {
         display: none;
     }
+
+    #none {
+        display: none;
+    }
+
+    #visible {
+        display: block;
+    }
+
+    section {
+        padding-top: 8px;
+        display: flex;
+        position: relative;
+        height: 240px;
+        aspect-ratio: 1 / 1;
+    }
+
+    .trending {
+        padding-top: 24px;
+    }
+
+    .trending-title {
+        padding-bottom: 16px;
+    }
+
+
 }

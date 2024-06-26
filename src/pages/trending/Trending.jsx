@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout";
 
-
 const Trending = () => {
   const [animeList, setAnimeList] = useState([]);
 
@@ -10,7 +9,7 @@ const Trending = () => {
   }, []);
 
   async function getTopAnime() {
-    const url = "https://api.jikan.moe/v4/top/anime?";
+    const url = "https://api.jikan.moe/v4/top/anime?limit=20";
 
     const response = await fetch(url);
 
@@ -32,9 +31,7 @@ const Trending = () => {
               animeList.map((anime) => (
                 <div class="trending-list-card" key={anime.mal_id}>
                   <a href={`/manga/manga/${anime.mal_id}`}>
-                    <div className="trending-list-card-image">
-                      <img src={anime.images.jpg.image_url} alt="img" />
-                    </div>
+                    <img src={anime.images.jpg.image_url} alt="img" />
                   </a>
                   <p>{anime.title}</p>
                   <img

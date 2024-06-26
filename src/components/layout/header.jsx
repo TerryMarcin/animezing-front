@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import HamSvg from "../../components/assets/ham";
+import GlassSvg from "../../components/assets/glass";
 
 const Header = (props) => {
   const [animeList, setAnimeList] = useState([]);
@@ -13,26 +14,41 @@ const Header = (props) => {
     setAnimeList(result.data);
     console.log(result.data);
   }
+
+  const [isActive , setIsActive] = useState(false);
+    console.log(isActive)
+  const toggleClass = () => {
+    (isActive)? setIsActive(false) : setIsActive(true)
+  };
+
   return (
     <header style={{}}>
       <navbar className="navbar">
-        <div className="navbar-logo_links">
-          <div className="navbar-logo">
-            <a href="/">
-              {" "}
-              <img src="/images/oshi-no-ko.jpg" alt="logo" />
-            </a>
-          </div>
+        <div className="navbar-container">
+          <a className="navbar-logo" href="/">
+            {" "}
+            <img src="/images/oshi-no-ko.jpg" alt="logo" />
+          </a>
+
           <div className="navbar-menu">
             {/* <img src="" alt="svg" /> */}
-            <HamSvg />
+            {/* <HamSvg /> */}
+            <div className="phone-signin" id="visible" onClick={toggleClass} >
+              <a>
+                <h5 >Menu</h5>
+              </a>
+      </div>
+
+            </div>
+      <div className={(isActive) ? 'target-active' : 'target'}>
+        <a href="/">Home</a><a href="#">goodies</a><a href="#">recommandations</a>
           </div>
           <div className="navbar-links">
             <a href="/">
               <p>Home</p>
             </a>
-            <a href="#">
-              <p>Merch</p>
+            <a href="/trending/Trending">
+              <p>Trending</p>
             </a>
             <a href="#">
               <p>Recommandations</p>
@@ -43,40 +59,26 @@ const Header = (props) => {
           <div
             style={{
               position: "relative",
-              //faire passer au dessus du main
               zIndex: 999,
             }}
           >
-            <input
-              className="navbar-input"
-              type="text"
-              placeholder="Search"
-              onChange={(e) => getSearchAnime(e.target.value)}
-            />
-            <div
-              style={{
-                width: "100%",
-                position: "absolute",
-                top: "calc(100% + 5px)",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <div className="search-results"
-                style={{
-                  display: "flex",
-                  height: "30px",
-                  backgroundColor: "grey",
-                }}
-              >
-                one piece
-              </div>
-            </div>
+            <a className="search" href="/search/Search">
+              <h2 id="none">Search </h2>
+              <GlassSvg />
+            </a>
           </div>
 
-          <a href="/signin/Signin">
-            <button className="button">Sign in</button>
-          </a>
+          <div class="sb-container" id="none">
+            <a href="/signin/Signin">Sign in / Sign up</a>
+            <i class="fas fa-arrow-right"></i>
+            <div className="bg"></div>
+          </div>
+          <div className="phone-signin" id="visible">
+            {" "}
+            <a href="/signin/Signin">
+              <h5>Sign in</h5>
+            </a>
+          </div>
         </div>
       </navbar>
     </header>

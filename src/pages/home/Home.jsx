@@ -1,18 +1,45 @@
 import React, { useEffect, useState } from "react";
-// import EyeSvg from "../../components/assets/eyeSvg";
-import "../home/Home.css";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import Layout from "../../components/layout";
+
+/* ---------------------------------------
+-----------------carousel-----------------
+-----------------------------------------*/
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+/* ---------------------------------------
+-----------------Home---------------------
+-----------------------------------------*/
 
 const Home = () => {
   const [animeList, setAnimeList] = useState([]);
-  // const [selectedAnime, setSelectedAnime] = useState(null);
 
   useEffect(() => {
     getTopAnime();
   }, []);
 
   async function getTopAnime() {
-    const url = "https://api.jikan.moe/v4/top/anime?limit=4";
+    const url = "https://api.jikan.moe/v4/top/anime?limit=15";
 
     const response = await fetch(url);
 
@@ -22,126 +49,85 @@ const Home = () => {
     console.log(result.data);
   }
 
-  // async function getSearchAnime(query) {
-  //   const url = `https://api.jikan.moe/v4/anime?q=${query}&&limit=10`;
-
-  //   const response = await fetch(url);
-
-  //   const result = await response.json();
-
-  //   setAnimeList(result.data);
-  //   console.log(result.data);
-  // }
-
   return (
     <Layout>
-      {/* --------------------------------------
-      -----------------header-------------------
-      --------------------------------------- */}
-
-      {/* <header>
-        <navbar className="navbar">
-          <div className="navbar-logo_links">
-            <div className="navbar-logo">
-              <img src="" alt="logo" />
-            </div>
-            <div className="navbar-links">
-              <a href="/">
-                <p>Home</p>
-              </a>
-              <a href="#">
-                <p>Merch</p>
-              </a>
-              <a href="#">
-                <p>Recommandations</p>
-              </a>
-            </div>
-          </div>
-          <div className="navbar-input_button">
-            <input
-              className="navbar-input"
-              // style={styles.input}
-              type="text"
-              placeholder="Search"
-              onChange={(e) => getSearchAnime(e.target.value)}
-            />
-            <button className="button">Sign up</button>
-          </div>
-        </navbar>
-      </header> */}
-
-      {/* --------------------------------------
-      -----------------main---------------------
-      --------------------------------------- */}
-
-      <div className="hero">
+      <section>
         <img src="images/jojos-bizarre-adventure.jpg" alt="jojo" />
-        <div className="hero-text_button">
+        <div className="hero-text_button" id="none">
           <div className="hero-text">
             <h1>WELCOME</h1>
-            <p>lorem ipsum</p>
           </div>
-          <button className="button">Latest news</button>
         </div>
-      </div>
+      </section>
       <div className="trending">
         <div className="trending-title">
           <h2>Trending anime</h2>
         </div>
-        <ul className="trending-list">
-          {animeList &&
-            animeList.map((anime) => (
-              <div class="trending-list-card" key={anime.mal_id}>
+        {animeList && (
+          <Carousel
+            responsive={responsive}
+            infinite={true}
+            autoPlay={true}
+            autoPlaySpeed={2000}
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+          >
+            {animeList.map((anime) => (
+              <div class="trending-list-carousel-card" key={anime.mal_id}>
                 <a href={`/manga/manga/${anime.mal_id}`}>
-                  <div className="trending-list-card-image">
+                  <div>
                     <img src={anime.images.jpg.image_url} alt="img" />
                   </div>
                 </a>
                 <p>{anime.title}</p>
               </div>
             ))}
-        </ul>
+          </Carousel>
+        )}
         <a href="/trending/Trending">
-          <button className="button">View all</button>
+          <button className="button" id="none">
+            View all
+          </button>{" "}
+          <div className="phone-signin" id="visible">
+            {" "}
+            <a href="/trending/Trending">
+              <h5>view all</h5>
+            </a>
+          </div>
         </a>
       </div>
-
       <div className="trending">
         <div className="trending-title">
           <h2>Merch</h2>
         </div>
-        <ul className="trending-list">
-          {animeList &&
-            animeList.map((anime) => (
-              <div class="trending-list-card" key={anime.mal_id}>
+        <Carousel
+            responsive={responsive}
+            infinite={true}
+            autoPlay={true}
+            autoPlaySpeed={2000}
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+          >
+            {animeList.map((anime) => (
+              <div class="trending-list-carousel-card" key={anime.mal_id}>
                 <a href={`/manga/manga/${anime.mal_id}`}>
-                  <div className="trending-list-card-image">
+                  <div>
                     <img src={anime.images.jpg.image_url} alt="img" />
                   </div>
                 </a>
                 <p>{anime.title}</p>
               </div>
             ))}
-        </ul>
-        <button className="button">View all</button>
+          </Carousel>
+        <button className="button" id="none">
+          View all
+        </button>
+        <div className="phone-signin" id="visible">
+          {" "}
+          <a href="/signin/Signin">
+            <h5>view all</h5>
+          </a>
+        </div>
       </div>
-
-      {/* --------------------------------------
-      -----------------footer-------------------
-      --------------------------------------- */}
     </Layout>
   );
 };
-
-// const styles = {
-//   navbar: {
-//     // display: "flex",
-//   },
-//   input: {
-//     backgroundColor: "#D9D9D9",
-//     borderRadius: "10px",
-//     padding: "8px",
-//   },
-// };
-
 export default Home;

@@ -34,14 +34,16 @@ const Manga = ({ mangaId }) => {
           <img src={mangaDetails.images.jpg.image_url} alt={mangaDetails} />
           <div className="manga-text">
             <h2>{mangaDetails.title}</h2>
-            <p>Synopsis: {mangaDetails.synopsis}</p>
+            <h5>Synopsis :</h5>
+            <p> {mangaDetails.synopsis}</p>
             <div className="manga-genres">
-              <p>Genres:</p>
+              <h5>Genres :</h5>
               {mangaDetails.genres.map((genre) => (
                 <p key={genre.mal_id}>{genre.name}</p>
               ))}
             </div>
-            <p>Score: {mangaDetails.score}</p>
+            <h5>Score : </h5>
+            <p>{mangaDetails.score}</p>
           </div>
         </div>
       ) : (
