@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Layout from "../../components/layout";
+import { useOutletContext } from "react-router-dom";
+import debounce from "lodash.debounce";
 
 /* ---------------------------------------
 -----------------carousel-----------------
@@ -33,29 +34,56 @@ const responsive = {
 
 const Home = () => {
   const [animeList, setAnimeList] = useState([]);
+  const [mangaList, setMangaList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  let user = useOutletContext();
 
   useEffect(() => {
+    console.log("USE EFFECT");
     getTopAnime();
+    getTopManga();
   }, []);
 
-  async function getTopAnime() {
+  let getTopAnime = debounce(async function () {
     const url = "https://api.jikan.moe/v4/top/anime?limit=15";
 
-    const response = await fetch(url);
+    try {
+      const response = await fetch(url);
 
-    const result = await response.json();
+      const result = await response.json();
+      console.log("ANIMES", result.data);
+      setAnimeList(result.data);
+      setLoading(false);
+    } catch (error) {
+      console.log("error fetching animelist:", error);
+      setLoading(false);
+    }
+  }, 1000);
 
-    setAnimeList(result.data);
-    console.log(result.data);
-  }
+  let getTopManga = debounce(async function () {
+    const url = "https://api.jikan.moe/v4/top/manga?limit=15";
+
+    try {
+      const response = await fetch(url);
+
+      const result = await response.json();
+
+      console.log("MANGAS", result.data);
+      setMangaList(result.data);
+      setLoading(false);
+    } catch (error) {
+      console.log("error fetching mangalist:", error);
+      setLoading(false);
+    }
+  }, 1000);
 
   return (
-    <Layout>
+    <>
       <section>
         <img src="images/jojos-bizarre-adventure.jpg" alt="jojo" />
         <div className="hero-text_button" id="none">
           <div className="hero-text">
-            <h1>WELCOME</h1>
+            <h1>Welcome {user.user ? user.user.name : null}</h1>
           </div>
         </div>
       </section>
@@ -63,7 +91,9 @@ const Home = () => {
         <div className="trending-title">
           <h2>Trending anime</h2>
         </div>
-        {animeList && (
+        {loading ? (
+          <p>Loading...</p>
+        ) : animeList.length > 0 ? (
           <Carousel
             responsive={responsive}
             infinite={true}
@@ -82,14 +112,16 @@ const Home = () => {
               </div>
             ))}
           </Carousel>
+        ) : (
+          <p>No anime found</p>
         )}
-        <a href="/trending/Trending">
+        <a href="/trending">
           <button className="button" id="none">
             View all
           </button>{" "}
           <div className="phone-signin" id="visible">
             {" "}
-            <a href="/trending/Trending">
+            <a href="/trending">
               <h5>view all</h5>
             </a>
           </div>
@@ -97,37 +129,43 @@ const Home = () => {
       </div>
       <div className="trending">
         <div className="trending-title">
-          <h2>Merch</h2>
+          <h2>Trending manga</h2>
         </div>
-        <Carousel
+        {loading ? (
+          <p>Loading...</p>
+        ) : animeList.length > 0 ? (
+          <Carousel
             responsive={responsive}
             infinite={true}
             autoPlay={true}
             autoPlaySpeed={2000}
             removeArrowOnDeviceType={["tablet", "mobile"]}
           >
-            {animeList.map((anime) => (
-              <div class="trending-list-carousel-card" key={anime.mal_id}>
-                <a href={`/manga/manga/${anime.mal_id}`}>
+            {mangaList.map((manga) => (
+              <div class="trending-list-carousel-card" key={manga.mal_id}>
+                <a href={`/manga/manga/${manga.mal_id}`}>
                   <div>
-                    <img src={anime.images.jpg.image_url} alt="img" />
+                    <img src={manga.images.jpg.image_url} alt="img" />
                   </div>
                 </a>
-                <p>{anime.title}</p>
+                <p>{manga.title}</p>
               </div>
             ))}
           </Carousel>
+        ) : (
+          <p>No manga found</p>
+        )}
         <button className="button" id="none">
-          View all
+          Next update
         </button>
         <div className="phone-signin" id="visible">
           {" "}
-          <a href="/signin/Signin">
-            <h5>view all</h5>
+          <a href="/#">
+            <h5>Next update</h5>
           </a>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 export default Home;

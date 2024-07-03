@@ -1,11 +1,18 @@
-import Layout from "../../components/layout";
+import Layout from "../../components/layout/MainLayout";
+import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const Signin = () => {
+  const [isSend, setIsSend] = useState(false);
+
+  const [searchParams, setSearchParams] = useSearchParams();
   /* ---------------------------------------
 -----récuperation des données rentrées----
 -----------------------------------------*/
 
   const onsubmit = async (e) => {
+    setIsSend(true);
+    setTimeout(() => setIsSend(false), 3000);
     e.preventDefault();
     console.log(e.target[0].value);
     const name = e.target[0].value;
@@ -28,28 +35,40 @@ const Signin = () => {
       console.error("Error:", error);
     }
   };
+
   return (
-    <main>
-      <div className="bigimg">
-        <div className="joinus">
-          <h1>Join Us !</h1>
-          <p>---------------------- or ----------------------</p>
-          <form action="get" onSubmit={onsubmit}>
-            <div className="joinus-input_text">
-              <p>Your name</p>
-              <input type="text" placeholder="Name" />
-            </div>
-            <div className="joinus-input_text">
-              <p>Your email</p>
-              <input type="email" placeholder="Email" />
-            </div>
-            <button className="joinus-button" type="submit">
-              sign in
-            </button>
-          </form>
-        </div>
+    <div className="bigimg">
+      <div className="joinus">
+        {isSend ? (
+          <div className="manga-message">
+            <p>Email sent successfully</p>
+          </div>
+        ) : null}
+        <h1>Join Us !</h1>
+        {searchParams.get("from") && (
+          <p>you need to sign in to access this page</p>
+        )}
+        <form action="get" onSubmit={onsubmit}>
+          <div className="joinus-input_text">
+            <p>Your name</p>
+            <input type="text" placeholder="Name" />
+          </div>
+          <div className="joinus-input_text">
+            <p>Your email</p>
+            <input
+              type="email"
+              placeholder="Email"
+              autocomplete="on"
+              name="email"
+              autocompletetype="email"
+            />
+          </div>
+          <button className="joinus-button" type="submit">
+            Sign in
+          </button>
+        </form>
       </div>
-    </main>
+    </div>
   );
 };
 

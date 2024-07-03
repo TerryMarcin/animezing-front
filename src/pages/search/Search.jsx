@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Layout from "../../components/layout";
 
 const Search = () => {
   const [animeList, setAnimeList] = useState([]);
@@ -14,7 +13,8 @@ const Search = () => {
     console.log(result.data);
   }
   return (
-    <Layout>
+    <>
+    
       <div className="search-field">
         <input
           className="search-input"
@@ -39,9 +39,9 @@ const Search = () => {
           </ul>
         </div>
       ) : (
-        <h2>Do a search ! </h2>
+        null
       )}
-    </Layout>
+    </>
   );
 };
 

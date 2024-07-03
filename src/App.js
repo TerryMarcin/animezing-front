@@ -1,12 +1,17 @@
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import Home from "./pages/home/Home";
 import Manga from "./pages/manga/Manga";
 import Trending from "./pages/trending/Trending";
 import Signin from "./pages/signin/Signin";
 import Search from "./pages/search/Search";
-import React, { useEffect, useState } from "react";
+import Profile from "./pages/profile/Profile";
+import Fav from "./pages/profile/Fav";
+import Suggestion from "./pages/profile/Suggestion";
 import Cookies from "js-cookie";
 import "./pages/home/Home.css";
+import MainLayout from "./components/layout/MainLayout";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
   const [animeList, setAnimeList] = useState([]);
@@ -28,7 +33,7 @@ function App() {
       if (!token) {
         throw "no token";
       }
-      console.log(token);
+      console.log("prendre le token depuis les cookies");
       const response = await fetch("http://localhost:3001/verify", {
         method: "POST",
         headers: {
@@ -40,7 +45,7 @@ function App() {
       const data = await response.json();
       console.log(data);
 
-      //si auth est true cela signifie que le token existe, est verifié, extrait,comparé avec celui de la bdd
+      //si auth est true cela signifie que le token existe, est verifié, extrait, comparé avec celui de la bdd
 
       const auth = data.success;
 
@@ -54,20 +59,66 @@ function App() {
     }
   }
 
+  useContext((auth) => {});
+
   useEffect(() => {
     fetchToken();
   }, []);
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/trending/Trending" element={<Trending />} />
-        <Route path="/signin/Signin" element={<Signin />} />
-        <Route path="/manga/Manga/:id" element={<Manga />} />
-        <Route path="/search/Search" element={<Search />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/signin",
+          element: <Signin />,
+        },
+        {
+          path: "/trending",
+          element: <Trending />,
+        },
+        {
+          path: "manga/Manga/:id",
+          element: <Manga />,
+        },
+        {
+          path: "search/Search",
+          element: <Search />,
+        },
+        {
+          path: "profile/Profile",
+          element: (
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "profile/Fav",
+          element: (
+            <ProtectedRoute>
+              <Fav />,
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "profile/Suggestion/",
+
+          element: (
+            <ProtectedRoute>
+              <Suggestion />
+            </ProtectedRoute>
+          ),
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 export default App;

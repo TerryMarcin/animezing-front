@@ -3,9 +3,23 @@ import React from "react";
 const Footer = () => {
   return (
     <footer>
-      <div className="contact-us">
-        <h3>Connect With Us </h3>
-        <p>
+      <div className="footer-container">
+        <div className="contact-us">
+          <h3>About</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+            necessitatibus voluptatem doloribus maxime eveniet nobis!
+          </p>
+        </div>
+        <div className="contact-us">
+          <h3>About</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+            necessitatibus voluptatem doloribus maxime eveniet nobis!
+          </p>
+        </div>
+        <div className="contact-us">
+          <h3>Connect </h3>
           <i>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -23,8 +37,7 @@ const Footer = () => {
               <path fill="#FFF" d="M20 31L20 17 32 24z"></path>{" "}
             </svg>
           </i>
-        </p>
-        <p>
+
           <i>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,8 +58,7 @@ const Footer = () => {
               ></path>{" "}
             </svg>
           </i>
-        </p>
-        <p>
+
           <i>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +118,7 @@ const Footer = () => {
               ></path>{" "}
             </svg>
           </i>
-        </p>
+        </div>
       </div>
     </footer>
   );

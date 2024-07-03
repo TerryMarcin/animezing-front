@@ -1,17 +1,30 @@
 @import url(./reset.css);
 
-@media screen {}
+/*---------------------------------------
+-----------------------------------------
+-----------------General------------------
+-----------------------------------------
+-----------------------------------------*/
 
 body {
     background-color: #060911;
     color: white;
 }
 
+h1:hover,
+h2:hover {
+    color: #95FC11;
+    font-weight: bolder;
+}
 
 
-/* --------------------------------------
------------------header------------------
+/*---------------------------------------
+-----------------------------------------
+-----------------Header------------------
+-----------------------------------------
 -----------------------------------------*/
+
+
 
 header {
     background-color: #060911;
@@ -21,6 +34,10 @@ header {
     padding-right: 16px;
     max-width: 1280px;
 }
+
+/* --------------------------------------
+-----------------Navbar------------------
+-----------------------------------------*/
 
 .navbar {
     display: flex;
@@ -43,19 +60,20 @@ header {
 }
 
 .target-active {
-    z-index: 999;
     position: absolute;
     top: 100%;
-    left: 50%;
+    left: 77%;
     height: max-content;
-    width: 75%;
+    width: min-content;
     display: flex;
     flex-direction: column;
+    gap: 8px;
     background-color: #ffffff;
     color: #95FC11;
     border-radius: 20px;
     text-align: center;
-    padding: 8px;
+    padding: 16px;
+    z-index: 999;
 }
 
 .navbar-logo {
@@ -64,13 +82,14 @@ header {
 }
 
 .navbar-logo img {
-    max-width: 85px;
-    max-height: 85px;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
+    max-width: 250px;
+    max-height: 200px;
+    border: rgb(46, 46, 46) solid 2px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 .navbar-menu {
@@ -88,10 +107,13 @@ header {
     gap: 40px;
     padding: 8px;
     align-items: center;
+
 }
 
-.navbar-links a p:hover {
+.navbar-links a:hover,
+.navbar-links p:hover {
     font-weight: bolder;
+    color: #95FC11;
 }
 
 .navbar-input_button {
@@ -113,6 +135,9 @@ header {
     gap: 4px;
 }
 
+.search:hover {
+    color: #95FC11;
+}
 
 .navbar-profile img {
     max-width: 80px;
@@ -124,10 +149,32 @@ header {
     -o-border-radius: 99px;
 }
 
+/* --------------------------------------
+---------------Profile pic---------------
+-----------------------------------------*/
+
+.phone-signin {
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    display: none;
+    color: #95FC11;
+    padding-bottom: 16px;
+}
+
+.pp {
+    width: 80px;
+    height: 80px;
+    border-radius: 99px;
+    -webkit-border-radius: 99px;
+    -moz-border-radius: 99px;
+    -ms-border-radius: 99px;
+    -o-border-radius: 99px;
+}
 
 
 /* --------------------------------------
------------ special button --------------
+----------- Special button --------------
 -----------------------------------------*/
 
 .sb-container {
@@ -177,23 +224,9 @@ header {
     width: 95%;
 }
 
-/* --------------------------------------
----------------profile pic---------------
------------------------------------------*/
-
-.phone-signin {
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    font-size: larger;
-    display: none;
-    color: #95FC11;
-}
-
-
 
 /* --------------------------------------
------------------searchbar---------------
+-----------------Searchbar---------------
 -----------------------------------------*/
 
 .search-field {
@@ -203,7 +236,6 @@ header {
     max-width: 1280px;
     width: 100%;
     display: flex;
-    background-color: black;
     padding: 20px;
     padding-top: 50px;
 }
@@ -220,9 +252,12 @@ header {
     -o-border-radius: 20px;
 }
 
-/* --------------------------------------
------------------main--------------------
+/*---------------------------------------
+-----------------------------------------
+-----------------Main--------------------
+-----------------------------------------
 -----------------------------------------*/
+
 
 main {
     margin-left: auto;
@@ -236,21 +271,26 @@ main {
 
 }
 
+/* ---------------------------------------
+------------------Section-----------------
+-----------------------------------------*/
+
 section {
     padding-top: 48px;
     display: flex;
     position: relative;
+
 }
 
 section img {
-    border: solid black;
+    border: rgb(46, 46, 46) solid 2px;
     border-radius: 24px;
     -webkit-border-radius: 24px;
     -moz-border-radius: 24px;
     -ms-border-radius: 24px;
     -o-border-radius: 24px;
     width: 100%;
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 16 / 9;
 }
 
 .hero-text_button {
@@ -270,8 +310,9 @@ section img {
     gap: 16px;
 }
 
+
 /* ---------------------------------------
---------------main button-----------------
+--------------Main button-----------------
 -----------------------------------------*/
 
 .button {
@@ -317,47 +358,30 @@ section img {
     -moz-border-radius: 16px;
     -ms-border-radius: 16px;
     -o-border-radius: 16px;
-    max-width: min-content;
-    height: 400px;
+    max-width: 230px;
+    aspect-ratio: 3 / 4;
     position: relative;
 }
 
 .trending-list-carousel-card {
-    border-radius: 16px;
-    padding: 8px 8px 8px 16px;
+    padding: 8px 8px 8px 8px;
     font-size: 24px;
+    max-width: 230px;
+    aspect-ratio: 3 / 4;
+    position: relative;
+    border-radius: 16px;
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
     -ms-border-radius: 16px;
     -o-border-radius: 16px;
-    max-width: min-content;
-    height: 400px;
-    position: relative;
+
 }
 
 .trending img {
     max-width: 400px;
     max-height: 400px;
     border-radius: 16px;
-}
-
-.like {
-    position: absolute;
-    top: 50%;
-    left: 80%;
-    width: 32px;
-    z-index: 99;
-    border: 2px solid black;
-}
-
-.read {
-    position: absolute;
-    top: 60%;
-    left: 80%;
-    width: 32px;
-    aspect-ratio: 1/1;
-    z-index: 99;
-    border: 2px solid black;
+    border: rgb(46, 46, 46) solid 2px;
 }
 
 .trending-list p {
@@ -365,7 +389,7 @@ section img {
 }
 
 /* ---------------------------------------
------------------manga--------------------
+-----------------Manga--------------------
 -----------------------------------------*/
 
 .manga-container {
@@ -378,50 +402,102 @@ section img {
 .manga-container img {
     max-width: 380px;
     max-height: 380px;
+    border: rgb(46, 46, 46) solid 2px;
     border-radius: 16px;
-
 }
 
 .manga-text {
     display: flex;
+    padding: 16px;
     flex-direction: column;
     gap: 24px;
-    overflow: scroll;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #95FC11 #060911;
+    border: rgb(46, 46, 46) solid 2px;
     height: 400px;
+    border-radius: 16px;
 }
 
+.manga-text h5,
+.manga-text h2 {
+    color: #95FC11;
+}
+
+.manga-buttons {
+    margin-top: 8px;
+    display: flex;
+    gap: 24px;
+}
+
+.manga-buttons :nth-child(2) {
+    background-color: red;
+
+}
 
 /* ---------------------------------------
 -----------------SIGNIN-------------------
 -----------------------------------------*/
+
+.manga-message {
+    display: flex;
+    padding: 16px;
+    width: fit-content;
+    border: #95FC11 2px solid;
+    border-radius: 99px;
+    -webkit-border-radius: 99px;
+    -moz-border-radius: 99px;
+    -ms-border-radius: 99px;
+    -o-border-radius: 99px;
+}
+
 .bigimg {
+    min-height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: url("../../../public/images/yu-gi-oh.jpg");
     background-origin: border-box;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    border: 2px solid black;
+    border-radius: 32px;
+    -webkit-border-radius: 32px;
+    -moz-border-radius: 32px;
+    -ms-border-radius: 32px;
+    -o-border-radius: 32px;
 }
 
 .joinus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 7px;
     background-color: rgba(0, 0, 0, 0.7);
-    background: (0, 0, 0, 0.4);
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    -ms-border-radius: 7px;
-    -o-border-radius: 7px;
-    padding: 24px;
-    gap: 29px;
+    background: (0, 0, 0, 0.7);
+    border-radius: 24px;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    -ms-border-radius: 24px;
+    -o-border-radius: 24px;
+    padding: 70px 40px 70px 40px;
+    gap: 24px;
+    margin: 24px;
 }
 
+.joinus h1 {
+    color: #95FC11;
+}
+
+.joinus form {
+    color: #95FC11;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px;
+}
 
 .joinus input {
-    padding: 12px 290px 12px 20px;
+    padding: 12px 180px 12px 20px;
     border-radius: 9px;
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
@@ -445,52 +521,139 @@ section img {
 
 
 /* --------------------------------------
------------------footer------------------
+-----------------Profile-----------------
+-----------------------------------------*/
+
+.profile {
+    padding: 48px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 48px;
+    gap: 48px;
+    height: min-content;
+    padding: 24px;
+}
+
+.profile-container img {
+    max-height: 250px;
+    max-width: 250px;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
+}
+
+.profile-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-input {
+    display: flex;
+    padding: 8px 48px 8px 8px;
+    border-radius: 9px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.profile-submit {
+    padding: 8px 24px 8px 8px;
+    border-radius: 9px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    color: #95FC11;
+    background: transparent;
+    border: transparent;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+/*---------------------------------------
+-----------------------------------------
+-----------------Footer------------------
+-----------------------------------------
 -----------------------------------------*/
 
 footer {
-    display: flex;
-    padding-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
     padding-left: 16px;
     padding-right: 16px;
     max-width: 1280px;
-    background-color: #060911;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.footer-container {
+    background-color: #3d3d3d;
+    display: flex;
+    justify-content: center;
+    flex-flow: row;
+    margin-top: 48px;
+    margin-bottom: 48px;
+    border-radius: 16px;
 }
 
 .contact-us {
+    max-height: min-content;
     display: flex;
-    justify-content: center;
-    gap: 24px;
-    cursor: pointer;
-    width: 100%;
-    background-color: rgba(128, 128, 128, 0.171);
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
 }
 
-/* ---------------------------------------
------------------media queries------------
------------------------------------------*/
+.contact-us h3 {
+    color: #95FC11;
+}
 
-/* iphone 12/13 */
-@media screen and (max-device-width: 700px) {
+#green {
+    font-weight: bolder;
+    color: #95FC11;
+}
+
+
+/*----------------------------------------
+------------------------------------------
+--------------Media queries---------------
+------------------------------------------
+------------------------------------------*/
+
+
+
+/*---------------------------------
+-- --------------------------------
+--------------Tablet---------------
+----------------------------------- 
+-----------------------------------*/
+
+@media screen and (max-device-width: 1023px) {
+
+    /*-------------------------------------
+-------------Font----------------------
+--------------------------------------- */
+
     h1 {
-        font-size: 24px;
+        font-size: 28px;
 
     }
 
     p {
-        font-size: 16px;
+        font-size: 18px;
     }
 
-    .navbar-menu {
-        display: block;
-
-    }
-
-    .navbar-links {
-        display: none;
-    }
+    /* --------------------------------
+-------------General---------------
+----------------------------------- */
 
     #none {
         display: none;
@@ -500,21 +663,207 @@ footer {
         display: block;
     }
 
+    /* --------------------------------
+-------------Navbar----------------
+----------------------------------- */
+
+    .navbar-menu {
+        display: block;
+    }
+
+    .navbar-links {
+        display: none;
+    }
+
+
+
+
+    /* --------------------------------
+    -------------Section--------------
+    ----------------------------------- */
+
+    section {
+        padding-top: 12px;
+        display: flex;
+        position: relative;
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+
+    /* --------------------------------
+    -------------Trending--------------
+    ----------------------------------- */
+
+    .trending {
+        padding-top: 32px;
+    }
+
+    .trending-title {
+        padding-bottom: 20px;
+    }
+
+    .trending-list-card {
+        max-width: 200px;
+        max-height: 360px;
+    }
+
+    .trending img {
+        max-width: 200px;
+        max-height: 362px;
+
+    }
+
+}
+
+/*---------------------------------
+-- --------------------------------
+-----------Iphone 12/13------------
+----------------------------------- 
+-----------------------------------*/
+
+
+@media screen and (max-device-width: 700px) {
+
+    /*-------------------------------------
+-------------Font----------------------
+--------------------------------------- */
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+    a {
+        font-size: 10px;
+    }
+
+    p {
+        font-size: 10px;
+    }
+
+    /* --------------------------------
+    -------------General---------------
+    ----------------------------------- */
+
+    #none {
+        display: none;
+    }
+
+    #none-phone {
+        display: none;
+    }
+
+    #visible {
+        display: block;
+    }
+
+    /* --------------------------------
+-------------Navbar----------------
+----------------------------------- */
+
+    .navbar {
+        gap: 16px;
+    }
+
+    .navbar-container {
+        gap: 16px;
+    }
+
+    .navbar-logo img {
+        max-width: 110px;
+        max-height: 110px
+    }
+
+    .navbar svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .navbar-menu {
+        display: block;
+    }
+
+    .navbar-links {
+        display: none;
+    }
+
+    .pp {
+        max-width: 36px;
+        max-height: 36px;
+    }
+
+    .target-active {
+        top: 100%;
+        left: 65%;
+    }
+
+    /* --------------------------------
+-------------Section---------------
+----------------------------------- */
+
     section {
         padding-top: 8px;
         display: flex;
         position: relative;
-        height: 240px;
-        aspect-ratio: 1 / 1;
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
     }
+
+    /* --------------------------------
+-------------Trending--------------
+----------------------------------- */
 
     .trending {
         padding-top: 24px;
+    }
+
+    .trending-list {
+        gap: 64px;
+    }
+
+    .trending-list-card {
+        max-width: 135px;
+        max-height: 260px;
     }
 
     .trending-title {
         padding-bottom: 16px;
     }
 
+    .trending img {
+        max-width: 187px;
+        max-height: 362px;
+    }
+
+    /* --------------------------------
+-------------Manga-----------------
+----------------------------------- */
+
+    .manga-container {
+        flex-direction: column;
+    }
+
+    .manga-container img {
+        max-width: 217px;
+        max-height: 326px;
+    }
+
+
+    /* --------------------------------
+-------------Footer----------------
+----------------------------------- */
+
+    .footer-container {
+        padding-left: 24px;
+        overflow-x: scroll;
+    }
 
 }
